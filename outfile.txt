@@ -1,0 +1,57 @@
+Script started on Wed Nov  9 16:28:44 2022
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jbrandongrier@Brandons-MBP-3 proj_3a % [K[?2004h[7mmake qemu-nox[27m[13D[27mm[27ma[27mk[27me[27m [27mq[27me[27mm[27mu[27m-[27mn[27mo[27mx[?2004l
+***
+*** Error: Couldn't find an i386-*-elf version of GCC/binutils.
+*** Is the directory with i386-jos-elf-gcc in your PATH?
+*** If your i386-*-elf toolchain is installed with a command
+*** prefix other than 'i386-jos-elf-', set your TOOLPREFIX
+*** environment variable to that prefix and run 'make' again.
+*** To turn off this error, run 'gmake TOOLPREFIX= ...'.
+***
+gcc -Werror -Wall -o mkfs mkfs.c
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -Wno-error=stringop-overflow -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector   -c -o ulib.o ulib.c
+[0;1;31merror: [0munknown warning option '-Werror=stringop-overflow'; did you mean '-Werror=shift-overflow'? [-Werror,-Wunknown-warning-option][0m
+make: *** [ulib.o] Error 1
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jbrandongrier@Brandons-MBP-3 proj_3a % [K[?2004hsstress proc        s  [7mstressproc[27m[10D[27ms[27mt[27mr[27me[27ms[27ms[27mp[27mr[27mo[27mc[?2004l
+zsh: command not found: stressproc
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jbrandongrier@Brandons-MBP-3 proj_3a % [K[?2004h[[200~ctrl a + x~[?2004l
+zsh: bad pattern: [200~ctrl
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jbrandongrier@Brandons-MBP-3 proj_3a % [K[?2004hccrto  c ctrl a+ x   A + x[?2004l
+zsh: command not found: ctrl
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jbrandongrier@Brandons-MBP-3 proj_3a % [K[?2004hmmake   m  ctrl a + x[10D[200~ctrl a + x~[16Dstressproc      [10Dmake qemu-nox[?2004l
+***
+*** Error: Couldn't find an i386-*-elf version of GCC/binutils.
+*** Is the directory with i386-jos-elf-gcc in your PATH?
+*** If your i386-*-elf toolchain is installed with a command
+*** prefix other than 'i386-jos-elf-', set your TOOLPREFIX
+*** environment variable to that prefix and run 'make' again.
+*** To turn off this error, run 'gmake TOOLPREFIX= ...'.
+***
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -Wno-error=stringop-overflow -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector   -c -o ulib.o ulib.c
+[0;1;31merror: [0munknown warning option '-Werror=stringop-overflow'; did you mean '-Werror=shift-overflow'? [-Werror,-Wunknown-warning-option][0m
+make: *** [ulib.o] Error 1
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jbrandongrier@Brandons-MBP-3 proj_3a % [K[?2004hmake qemu-nox[?2004l
+i386-jos-elfgcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -Wno-error=stringop-overflow -ggdb -m32 -Werror -fno-omit-frame-pointer    -c -o ulib.o ulib.c
+make: i386-jos-elfgcc: No such file or directory
+make: *** [ulib.o] Error 1
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jbrandongrier@Brandons-MBP-3 proj_3a % [K[?2004hmake qemu-nox[?2004l
+i386-jos-elfgcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -Wno-error=stringop-overflow -ggdb -m32 -Werror -fno-omit-frame-pointer    -c -o ulib.o ulib.c
+make: i386-jos-elfgcc: No such file or directory
+make: *** [ulib.o] Error 1
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jbrandongrier@Brandons-MBP-3 proj_3a % [K[?2004hmake qemu-nox[?2004l
+***
+*** Error: Couldn't find an i386-*-elf version of GCC/binutils.
+*** Is the directory with i386-jos-elf-gcc in your PATH?
+*** If your i386-*-elf toolchain is installed with a command
+*** prefix other than 'i386-jos-elf-', set your TOOLPREFIX
+*** environment variable to that prefix and run 'make' again.
+*** To turn off this error, run 'gmake TOOLPREFIX= ...'.
+***
+gcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -Wno-error=stringop-overflow -ggdb -m32 -Werror -fno-omit-frame-pointer -fno-stack-protector   -c -o ulib.o ulib.c
+[0;1;31merror: [0munknown warning option '-Werror=stringop-overflow'; did you mean '-Werror=shift-overflow'? [-Werror,-Wunknown-warning-option][0m
+make: *** [ulib.o] Error 1
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jbrandongrier@Brandons-MBP-3 proj_3a % [K[?2004hmake qemu-nox[?2004l
+i386-jos-elfgcc -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -Wno-error=stringop-overflow -ggdb -m32 -Werror -fno-omit-frame-pointer    -c -o ulib.o ulib.c
+make: i386-jos-elfgcc: No such file or directory
+make: *** [ulib.o] Error 1
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jbrandongrier@Brandons-MBP-3 proj_3a % [K[?2004h

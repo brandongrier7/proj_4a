@@ -88,6 +88,9 @@ allocproc(void)
 found:
   p->state = EMBRYO;
   p->pid = nextpid++;
+  p->numQueue=3;
+  p->remainInterations=8;
+  p->iterations=0;
 
   release(&ptable.lock);
 
@@ -329,13 +332,37 @@ scheduler(void)
   for(;;){
     // Enable interrupts on this processor.
     sti();
+    int queueMax = ptable.proc->numQueue;
 
     // Loop over process table looking for process to run.
     acquire(&ptable.lock);
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-      if(p->state != RUNNABLE)
-        continue;
+      if(p->state != RUNNABLE){
+        queueCheck(p);
+      }
+    }
 
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      if (p->state == RUNNABLE && p->numQueue > queueMax){
+        queueMax = p->numQueue;
+      }
+    }
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+        if(p->state != RUNNABLE){
+	        continue;
+	      }
+	      else if (runnable(p, queueMax)){
+	        p->iterations = 0;
+	        p->remainInterations--;
+	      }
+	      else if (p->state == RUNNABLE){
+	        p->iterations++;
+	        cprintf("Process [%s:%d] Queue Number: %d Idle Count: %d Remaining Iterations on current queue level: %d0 ms\n", p->name,p->pid, p->numQueue,p->iterations, p->remainInterations);
+	        continue;
+	      }
+	      else {
+		    continue;
+	    }
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
@@ -349,11 +376,56 @@ scheduler(void)
       // Process is done running for now.
       // It should have changed its p->state before coming back.
       c->proc = 0;
-      cprintf("process [%s:%d] is running\n", p->name, p->pid);
+      cprintf("Process [%s:%d] Queue Number: %d Idle Count: %d Remaining Iterations on current queue level: %d0 ms\n", p->name,p->pid, p->numQueue,p->iterations, p->remainInterations);
     }
     release(&ptable.lock);
 
   }
+}
+
+void queueSwitch(struct proc *p, int queueNew){
+	p->numQueue = queueNew;
+        p->iterations = 0;
+
+	switch (queueNew){
+	case 3:
+		p->remainInterations = 8;
+		break;
+	case 2:
+		p->remainInterations = 16;
+		break;
+	case 1:
+		p->remainInterations = 24;
+		break;
+	case 0:
+		p->remainInterations = 500;
+		break;
+	default:
+		cprintf ("Not a valid queue level");
+		break;
+	}
+}
+
+void queueCheck (struct proc *p){
+  if (p->remainInterations <=0){
+	  if (p->numQueue >0){
+		  changeQueue(p, p->numQueue -1);
+	  }
+	  return;
+  }
+  if (p->iterations > p->remainInterations){
+	  if (p->numQueue < 3){
+		  changeQueue(p, p->numQueue +1);
+	  }
+	  return;
+  }
+}
+
+int runnable (struct proc * p, int maxQueue){
+	if ((p->numQueue < maxQueue && !(p->numQueue == 0 && maxQueue == 0)) || p->remainInterations <= 0){
+		return 0;
+	}
+	return 1;
 }
 
 // Enter scheduler.  Must hold only ptable.lock
